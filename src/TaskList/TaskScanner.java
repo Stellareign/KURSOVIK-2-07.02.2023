@@ -3,7 +3,7 @@ package TaskList;
 import TaskList.Enums.TasksPeriod;
 import TaskList.Enums.Type;
 import TaskList.Exceptions.IncorrectArgumentException;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,7 +22,7 @@ public class TaskScanner {
 
     Scanner scanner = new Scanner(System.in);
 
-    public static String scanTitle(@NotNull Scanner scanner) {
+    public static String scanTitle(Scanner scanner) {
         while (true) { // позволяет перезапускать программу при ошибке
             try {
                 out.println("Введите название задачи: ");
@@ -36,7 +36,7 @@ public class TaskScanner {
         }
     }
 
-    public static Type scanType(@NotNull Scanner scanner) {
+    public static Type scanType(Scanner scanner) {
         while (true) {
             try {
                 out.println("Введите тип задачи (цифрой): 0 - личная, 1 - рабочая:");
@@ -53,7 +53,7 @@ public class TaskScanner {
         }
     }
 
-    public static TasksPeriod scanPeriod(@NotNull Scanner scanner) {
+    public static TasksPeriod scanPeriod(Scanner scanner) {
         while (true) {
             try {
                 out.println("Укажите периодичность задачи (цифрой): \n" +
