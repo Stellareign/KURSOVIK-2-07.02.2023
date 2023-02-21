@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public abstract class Task  {
-    static int idGenerator = 1;
+   private static int idGenerator = 1;
     private String  title;
 
    private int id;
@@ -19,18 +19,8 @@ public abstract class Task  {
     private Type type;
 
    // конструктор:
-    public Task(String title, Type type, LocalDateTime dateTime,
-                TasksPeriod tasksPeriod, String description) throws IncorrectArgumentException {
 
-     this.id = idGenerator++;
-     this.title = title;
-     this.type = type;
-     this.dateTime = dateTime;
-     this.description = description;
-     this.tasksPeriod = tasksPeriod;
-         }
-
-    public Task(String title, Type type, LocalDateTime dateTime, String description) throws IncorrectArgumentException {
+    public Task(String title, Type type, LocalDateTime dateTime,  TasksPeriod tasksPeriod, String description) throws IncorrectArgumentException {
         this.id = idGenerator++;
         try {
             if (title != null && !title.isBlank() && !title.isEmpty()) {
@@ -44,6 +34,7 @@ public abstract class Task  {
             this.dateTime = dateTime;
         }else this.dateTime = LocalDateTime.now();
 
+        this.tasksPeriod = tasksPeriod;
         this.description = description;
         this.type = Objects.requireNonNullElse(type, Type.PERSONAL);
     }

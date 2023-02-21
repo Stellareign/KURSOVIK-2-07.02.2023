@@ -9,13 +9,7 @@ import java.time.LocalDateTime;
 
 public class WeeklyTask extends Task {
     public WeeklyTask(String title, Type type, LocalDateTime dateTime, TasksPeriod tasksPeriod, String description) throws IncorrectArgumentException {
-        super(title, type, dateTime, tasksPeriod, description);
-        this.tasksPeriod = TasksPeriod.WEEKLYTASK;
-    }
-
-    public WeeklyTask(String title, Type type, LocalDateTime dateTime, String description) {
-        super(title, type, dateTime, description);
-        this.tasksPeriod = TasksPeriod.WEEKLYTASK;
+        super(title, type, dateTime, TasksPeriod.WEEKLYTASK, description);
     }
 
     @Override
@@ -26,18 +20,4 @@ public class WeeklyTask extends Task {
         } else return false;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }

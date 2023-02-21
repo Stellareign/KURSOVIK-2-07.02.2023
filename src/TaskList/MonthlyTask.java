@@ -9,14 +9,9 @@ import java.time.LocalDateTime;
 
 public class MonthlyTask extends Task {
     public MonthlyTask(String title, Type type, LocalDateTime dateTime, TasksPeriod tasksPeriod, String description) throws IncorrectArgumentException {
-        super(title, type, dateTime, tasksPeriod, description);
-        this.tasksPeriod = TasksPeriod.MONTHLYTASK;
+        super(title, type, dateTime, TasksPeriod.MONTHLYTASK, description);
     }
 
-    public MonthlyTask(String title, Type type, LocalDateTime dateTime, String description) {
-        super(title, type, dateTime, description);
-        this.tasksPeriod = TasksPeriod.MONTHLYTASK;
-    }
 
     @Override
     boolean appearsIn(LocalDate localDate) {
@@ -24,18 +19,5 @@ public class MonthlyTask extends Task {
     }
 
 
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
-    }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
 }

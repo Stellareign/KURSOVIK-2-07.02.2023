@@ -14,13 +14,11 @@ import java.util.Scanner;
 import static java.lang.System.out;
 
 
-//  public Task(String title, Type type, LocalDateTime dateTime, TasksPeriod tasksPeriod, String description
-//                 ) throws IncorrectArgumentException {
+//  public Task(String title, Type type, LocalDateTime dateTime, TasksPeriod tasksPeriod, String description)
+
 public class TaskScanner {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
-
-    Scanner scanner = new Scanner(System.in);
 
     public static String scanTitle(Scanner scanner) {
         while (true) { // позволяет перезапускать программу при ошибке

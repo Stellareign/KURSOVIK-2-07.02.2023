@@ -9,18 +9,15 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
-
 public class TaskListMenu {
     // СКАННЕР ДЛЯ ОБСЛУЖИВАНИЯ ЛИСТА ЗАДАЧ
     Task TASK;
     static TaskService TASK_SERVICE = new TaskService();
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-
         public static void TaskListMaintenance() throws TaskNotFoundException, IncorrectArgumentException {
 
         Scanner scanner = new Scanner(System.in);
-            label:
         while (true) {
             try {
                 System.out.println("Выберите действие: \n 1 - Создать задачу; \n 2 - Удалить задачу; \n " +
@@ -34,8 +31,6 @@ public class TaskListMenu {
                             break;
 
                         case 2: // УДАЛИТЬ ЗАДАЧУ
-                            System.out.println("Для выхода из меню введите 0");
-                            TaskService.printAllTasksMap();
                             System.out.println("Введите ID задачи для удаления из списка");
                             int scanID = scanner.nextInt();
 
@@ -76,7 +71,6 @@ public class TaskListMenu {
                                 TASK_SERVICE.scanChangeTask(scanID2);
                             } else
                                 throw new IncorrectArgumentException("Такой задачи нет. Выберите другую задачу");
-
                             break;
 
                         case 6:

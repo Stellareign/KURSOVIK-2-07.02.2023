@@ -13,11 +13,10 @@ import java.util.stream.Collectors;
 
 public class TaskService {
     // СОЗДАНИЕ ЗАДАЧ, УДАЛЕНИЕ, ГРУППИРОВАНИЕ
-    ServiceTask serviceTask = new ServiceTask();
+
     // МАПА ДЛЯ ЗАДАЧ:
     private static final Map<Integer, Task> tasksMap = new HashMap<>(); // мапа с задачами
     private static final Map<Integer, Task> removeTaskMap = new HashMap<>();
-    private static Task TASK;
 
     // ДОБАВЛЕНИЕ В МАПУ:
     public Map addToMap(Task task) { // метод добавления в мапу
@@ -78,7 +77,7 @@ public class TaskService {
         }
     }
 
-    // СКАНИРУЕМ ИЗМЕНЕНИЯ НИЗВАНИЯ И ОПИСАНИЯ ЗАДАЧИ:
+    // СКАНИРУЕМ ИЗМЕНЕНИЯ НАЗВАНИЯ И ОПИСАНИЯ ЗАДАЧИ:
     public Map scanChangeTask(int id) throws IncorrectArgumentException {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите пункт меню: \n 1 - Изменить название; \n 2 - Изменить описание.");
@@ -122,7 +121,7 @@ public class TaskService {
             LocalDateTime dateTime = TaskScanner.scanDateTime(scanner);
             TasksPeriod tasksPeriod = TaskScanner.scanPeriod(scanner);
             String description = TaskScanner.scanDescription(scanner);
-            Task task = new Task(title, type, dateTime, tasksPeriod, description) {
+            Task task = new Task(title, type, dateTime, tasksPeriod, description) { // не получается инициализировать по-другому, я пробовала, но в switch выскакивает ошибка
                 @Override
                 boolean appearsIn(LocalDate localDate) {
                     return false;
@@ -130,19 +129,19 @@ public class TaskService {
             };
             switch (tasksPeriod) {
                 case ONETIMETASK:
-                    task = new OneTimeTask(title, type, dateTime, tasksPeriod, description);
+                    task = new OneTimeTask(title, type, dateTime, TasksPeriod.ONETIMETASK, description);
                     break;
                 case DALYTASK:
-                    task = new DalyTask(title, type, dateTime, tasksPeriod, description);
+                    task = new DalyTask(title, type, dateTime, TasksPeriod.DALYTASK, description);
                     break;
                 case WEEKLYTASK:
-                    task = new WeeklyTask(title, type, dateTime, tasksPeriod, description);
+                    task = new WeeklyTask(title, type, dateTime, TasksPeriod.WEEKLYTASK, description);
                     break;
                 case MONTHLYTASK:
-                    task = new MonthlyTask(title, type, dateTime, tasksPeriod, description);
+                    task = new MonthlyTask(title, type, dateTime, TasksPeriod.MONTHLYTASK, description);
                     break;
                 case YEARLYTASK:
-                    task = new YearlyTask(title, type, dateTime, tasksPeriod, description);
+                    task = new YearlyTask(title, type, dateTime, TasksPeriod.YEARLYTASK, description);
                     break;
             }            ;
             TASK_SERVICE.addToMap(task);
