@@ -33,8 +33,8 @@ public class Main {
            .collect(Collectors.toList()); // запулили из потока обратно в лист
    List<ArrayList<Book>> bookcase = IntStream // поток примитивов - для индексов-количества полок в листе-шкафу
            .rangeClosed(0, 4) // поток из диапазона чисел
-           .mapToObj(s -> new ArrayList<Book>()) // преобразование в поток листов-полок - лист-книжный шкаф
-           .collect(Collectors.toList()); // поток в лист
+           .mapToObj(s -> new ArrayList<Book>()) // преобразование в поток "книжный шкаф", состоящий из листов-полок
+           .collect(Collectors.toList()); // поток "книжный шкаф" в лист
    int booksPerShelf = sortedBooks.size() / bookcase.size(); // количество книг на полке
    int shelfWithBooks = sortedBooks.size() % bookcase.size(); // количество полок для дозаполнения
    int skip = 0; // уже попавшие на полку книги
