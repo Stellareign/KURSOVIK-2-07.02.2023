@@ -29,7 +29,7 @@ public class Main {
 
   public static List<ArrayList<Book>> addBooksPerShelves (List < Book > allBooks) {
    List<Book> sortedBooks = allBooks.stream()
-           .sorted(Comparator.comparing(Book::getBookTitle)) // отсортировали по назанию
+           .sorted(Comparator.comparing(Book::getBookTitle)) // отсортировали по названию
            .collect(Collectors.toList()); // запулили из потока обратно в лист
    List<ArrayList<Book>> bookcase = IntStream // поток примитивов - для индексов-количества полок в листе-шкафу
            .rangeClosed(0, 4) // поток из диапазона чисел
@@ -40,7 +40,7 @@ public class Main {
    int skip = 0; // уже попавшие на полку книги
    for (int i = 0; i < bookcase.size(); i++) { // проходимся по полкам шкафа
     int limit; // предел кол-ва книг на полке
-    if (i + 1 <= shelfWithBooks) limit = booksPerShelf + 1; // если индекс cлед. полки с книгами <= кол-ву необходимых для дозаполн.книг, увеличиваем лимит полки
+    if (i + 1 <= shelfWithBooks) limit = booksPerShelf + 1; // если индекс cлед. полки с книгами <= кол-ву необходимых для дозаполн.полок, увеличиваем лимит полки
     else limit = booksPerShelf; //иначе лимит равен кол-ву книг на полке
 
     List<Book> currentBooks = sortedBooks.stream() // создаём поток отсортированных книг на полке
