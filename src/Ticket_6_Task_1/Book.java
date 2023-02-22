@@ -1,4 +1,4 @@
-package Tiket_6_Task_1;
+package Ticket_6_Task_1;
 
 import java.util.Objects;
 

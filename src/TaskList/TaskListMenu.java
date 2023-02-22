@@ -11,7 +11,6 @@ import java.util.Scanner;
 
 public class TaskListMenu {
     // СКАННЕР ДЛЯ ОБСЛУЖИВАНИЯ ЛИСТА ЗАДАЧ
-    Task TASK;
     static TaskService TASK_SERVICE = new TaskService();
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
@@ -64,7 +63,7 @@ public class TaskListMenu {
                             break;
 
                         case 5: // ИЗМЕНИТЬ ЗАДАЧУ:
-                            System.out.println("Введите ID задачи изменения названия или описания");
+                            System.out.println("Введите ID задачи для изменения названия или описания");
                             TaskService.printAllTasksMap();
                             int scanID2 = scanner.nextInt();
                             if (TASK_SERVICE.getTasksMap().containsKey(scanID2)) {
@@ -80,7 +79,7 @@ public class TaskListMenu {
                             System.exit(0);
                     }
                 } else
-                    throw new IncorrectArgumentException("Введено некорректное значение. Выберите пункт меню от 1 до 8");
+                    throw new IncorrectArgumentException("Введено некорректное значение. Выберите пункт меню от 1 до 6");
             } catch (TaskNotFoundException e) {
                 System.out.println(e.getMessage());
             } catch (IncorrectArgumentException e) {

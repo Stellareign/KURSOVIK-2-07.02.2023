@@ -144,7 +144,7 @@ public class TaskService {
                     task = new YearlyTask(title, type, dateTime, TasksPeriod.YEARLYTASK, description);
                     break;
             }            ;
-            TASK_SERVICE.addToMap(task);
+            TASK_SERVICE.addToMap(task); // я пробовала Task task, но тогда у меня не читается task в этой строке. :(
 
         }
     }

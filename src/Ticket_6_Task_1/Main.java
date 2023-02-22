@@ -1,8 +1,6 @@
-package Tiket_6_Task_1;
+package Ticket_6_Task_1;
 
-import java.io.StringBufferInputStream;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
