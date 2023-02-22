@@ -115,18 +115,13 @@ public class TaskService {
         private static final TaskService TASK_SERVICE = new TaskService();
 
         //Task (String title, Type type, LocalDateTime dateTime, TasksPeriod tasksPeriod, String description
-        public static void scanTask(Scanner scanner) { // пробуем создать задачу
+        public static void scanTask(Scanner scanner) { // создаём задачу
             String title = TaskScanner.scanTitle(scanner);
             Type type = TaskScanner.scanType(scanner);
             LocalDateTime dateTime = TaskScanner.scanDateTime(scanner);
             TasksPeriod tasksPeriod = TaskScanner.scanPeriod(scanner);
             String description = TaskScanner.scanDescription(scanner);
-            Task task = new Task(title, type, dateTime, tasksPeriod, description) { // не получается инициализировать по-другому, я пробовала, но в switch выскакивает ошибка
-                @Override
-                boolean appearsIn(LocalDate localDate) {
-                    return false;
-                }
-            };
+            Task task;
             switch (tasksPeriod) {
                 case ONETIMETASK:
                     task = new OneTimeTask(title, type, dateTime, TasksPeriod.ONETIMETASK, description);
@@ -143,8 +138,10 @@ public class TaskService {
                 case YEARLYTASK:
                     task = new YearlyTask(title, type, dateTime, TasksPeriod.YEARLYTASK, description);
                     break;
-            }            ;
-            TASK_SERVICE.addToMap(task); // я пробовала Task task, но тогда у меня не читается task в этой строке. :(
+                default: // Так вот в чём дело было! ))) Спасибо!
+                    throw new IncorrectArgumentException("Передан некорректный тип задачи");
+            }
+            TASK_SERVICE.addToMap(task);
 
         }
     }
